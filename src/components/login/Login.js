@@ -1,8 +1,47 @@
-import React from 'react';
+
 import '../login/login.css';
 import img from '../assets/glogo.png'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import React,{ useState } from 'react'
+import { useLazyQuery, gql} from "@apollo/client";
+
 export default function Login() {
+    
+    const [inputpassword,setPassword]=useState("");
+    const [inputemail,setEmail]=useState("");
+    const [loggedIn,setLoggedIn]=useState(false);
+    const navigate = useNavigate();
+
+    const [Loginfunc] = useLazyQuery(gql`
+    query Login($details: userLogin) {
+        login(details: $details) {
+          token
+        }
+      }
+    `,{
+        onCompleted:(data)=>{
+            if (data.login && data.login.token) 
+            {
+                const token = data.login.token;
+                localStorage.setItem('authToken', token);
+                
+                setLoggedIn(true);
+            } 
+            else 
+            {
+                console.error('Error signing up: No token received.');
+            }
+        },
+        onError: (error) => {
+            console.error('Error signing up:', error.message);
+          
+        }
+    });
+    
+    if(loggedIn){
+        navigate('/');
+    }
+
     return (
         <div className='d'>
             <div className='parent'>
@@ -11,8 +50,14 @@ export default function Login() {
                         <h1>Login</h1>
                     </div>
                     <div className='ifield'>
-                        <input type="input" placeholder='Email' />
-                        <input id='input2' type="password" placeholder='password' />
+                        <input type="input" placeholder='Email' value={inputemail}
+                        onChange={(e) => {
+                            setEmail(e.target.value.toLowerCase());
+                        }}/>
+                        <input id='input2' type="password" placeholder='password' 
+                            onChange={(e) => {
+                                        setPassword(e.target.value.toLowerCase());
+                                }}/>
                     </div>
                     <div className='chk'>
                         <div>
@@ -31,7 +76,10 @@ export default function Login() {
                         </div>
                         
                     </div>
-                    <div className='btn1'>
+                    <div className='btn1'onClick={()=>{
+                        Loginfunc({variables: {details : {"usermail":inputemail,"password":inputpassword}}})
+                        
+                    }}>
                         <p>Login</p>
                     </div>
                     <div className='btn2'>

@@ -1,12 +1,47 @@
 // import { Navbar } from '@material-tailwind/react'
-import React from 'react';
+import { Link,useNavigate } from 'react-router-dom'
+import React,{ useEffect, useState } from 'react'
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 import style from './Contribute.module.css'
 import img1 from '../a1.jpg';
-export default function Contribute() {
+
+export default function Contribute(postdetails) {
+
+  const {postInfo}=postdetails;
+  const [commentList,setCommentList]=useState([]);
+
+  
+  const [getCommentfunc]=useLazyQuery(gql`
+  query GetComments($details: getComment!) {
+      getComments(details: $details) {
+        commentID
+        commentText
+        postedBy
+        repliedTo
+      }
+    }
+`, {
+  
+  onCompleted: (data) => {
+      setCommentList(data["getPosts"])
+  },
+      onError: (error) => {
+          console.error('Error signing up:', error.message);
+        
+      }
+});
+
+
+
+
+
   return (
+
+    
     <div className={style.wrapper}>
       <div className={style.container}>
-        {/* profile picture and UserName */}
+        {/* profile picture and UserName */
+        }
           <div className={style.user}>
             {/* image */}
             <div>
@@ -14,7 +49,7 @@ export default function Contribute() {
             </div>
             
             {/*  username */}
-            <p className={style.username}>Harry18</p>
+            <p className={style.username}><h1>{postInfo.postedBy}</h1></p>
           </div>
 
           <div className={style.top}>
@@ -36,6 +71,7 @@ export default function Contribute() {
             {/* Description-section */}
               <div className={style.desc}>
               <textarea name="postContent" rows={17} cols={80} />
+              {postInfo.description}
               </div>
           </div>
 
@@ -50,6 +86,8 @@ export default function Contribute() {
                 </div>
           </div>
 
+
+          
 
       </div>
       

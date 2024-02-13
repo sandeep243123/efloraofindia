@@ -1,7 +1,45 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import '../signup/signup.css'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
+import { gql, useMutation } from "@apollo/client";
+
+
 export default function Signup() {
+    const [inputname,setName]=useState("");
+    const [inputpassword,setPassword]=useState("");
+    const [inputemail,setEmail]=useState("");
+    const [loggedIn,setLoggedIn]=useState(false);
+    //const navigate = useNavigate();
+
+
+    const signupMutation = gql`
+        mutation Signup($details: SignupDetails) {
+        signup(details: $details) {
+            token
+        }
+      }
+    `
+    const [signupfunc] = 
+    useMutation(signupMutation, {
+        onCompleted:(data)=>{
+            if (data.signup && data.signup.token) 
+            {
+                const token = data.signup.token;
+                localStorage.setItem('authToken', token);
+                setLoggedIn(true)
+
+            } 
+            else 
+            {
+                console.error('Error signing up: No token received.');
+            }
+        }})
+
+    if(loggedIn)
+    {
+        //navigate('/');
+    }
+ 
   return (
     <div className='d1'>
         <div className='parent1'>
@@ -12,25 +50,33 @@ export default function Signup() {
                 <div className='input-form1'>
                     <div className='ifield1'>
                         <p>Full name</p>
-                        <input type="text" placeholder='Your name' />
+                        <input type="text" placeholder='Your name' value={inputname}
+                                    onChange={(e) => {
+                                        setName(e.target.value.toLowerCase());
+                                    }}/>
                     </div>
                     <div className='ifield1'>
                         <p>Email address</p>
-                        <input type="text" placeholder='xyz@gmail.com' />
-                    </div>
-                    <div className='ifield1'>
-                        <p>Phone number</p>
-                        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder='+91 000 000 000 0'/>
+                        <input type="text" placeholder='xyz@gmail.com' value={inputemail}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value.toLowerCase());
+                                    }}/>
                     </div>
                     <div className='ifield1'>
                         <p>Create password</p>
-                        <input type="password1" placeholder='Pasword' />
+                        <input type="password1" placeholder='Pasword' value={inputpassword}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value.toLowerCase());
+                                    }}/>
                     </div>
                     <div className='password-constraints'>
                         <p>Password must contain a minimum 8 characters</p>
                         <p>Password must contain at least one symbol e.g @,!</p>
                     </div>
-                    <div className='btn11'>
+                    <div className='btn11' onClick={()=>{
+                        signupfunc({variables: {details : {"email":inputemail,"name":inputname,"password":inputpassword}}})
+                        
+                    }}>
                         <p>Sign Up</p>
                     </div>
                     <div className='tc1'>
@@ -44,7 +90,7 @@ export default function Signup() {
                     </div>
                     <div className='start1'>
                         <p>Already a user?</p>
-                        <div>Login</div>
+                        <Link to="/login">Login</Link>
                     </div>
                 </div>
             </div>
