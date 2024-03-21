@@ -6,6 +6,8 @@ import userImg from '../popup components/view contribution/user.png'
 import logoutImg from '../assets/switch.png'
 import signupImg from '../assets/add-friend.png'
 import loginImg from '../assets/login.png'
+import postImg from '../assets/blog.png'
+import dashboardImg from '../assets/dashboard.png'
 import contactImg from '../assets/customer-service.png'
 import aboutImg from '../assets/about-us.png'
 import exploreImg from '../assets/explore.png'
@@ -45,7 +47,7 @@ export default function Navbar() {
         <div className="nav-links">
 
           <Link to={'/'}><img src={exploreImg} className="icon-img"></img>Explore</Link>
-          <Link to={'/profile'}><img src={exploreImg} className="icon-img"></img>Profile</Link>
+          <Link to={'/profile'}><img src={userImg} className="icon-img"></img>Profile</Link>
           <Link to={'/about'} ><img src={aboutImg} className="icon-img"></img>About us</Link>
           <Link to={'/contact'} ><img src={contactImg} className="icon-img"></img>Contact us</Link>
           {
@@ -53,10 +55,10 @@ export default function Navbar() {
               <>
                 <Link to={'/upload'} ><img src={contributeImg} className="icon-img" alt=""></img>Contribute</Link>
 
-                <Link to={'/'} onClick={handleLogout}><img src={logoutImg} className="icon-img" alt=""></img>Sign out</Link>
                 {/* <Link to={'/upload'}>Upload</Link> */}
-                <Link to={'/showposts'} >Show Posts</Link>
-                <Link to={'/dashboard'} >Leaderboard</Link>
+                <Link to={'/showposts'} ><img src={postImg} className="icon-img"></img>Show Posts</Link>
+                <Link to={'/dashboard'} ><img src={dashboardImg} className="icon-img"></img>Dashboard</Link>
+                <Link to={'/'} onClick={handleLogout}><img src={logoutImg} className="icon-img" alt=""></img>Sign out</Link>
               </>
             ) : (
               <>
