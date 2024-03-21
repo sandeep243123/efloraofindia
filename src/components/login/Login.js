@@ -125,7 +125,7 @@ export default function Login() {
                     </div>
                     <div className='btn2'>
                         <img src={img} alt="" />
-                        <p>Continue with Login</p>
+                        <p>Continue with Google</p>
                     </div>
                     <div className='start'>
                         <p>Don't have an account?</p>

@@ -207,7 +207,7 @@ function Selector(props) {
         useMutation(addFeaturePropertyMutation, {
             onCompleted: (data) => {
                 setpropertyID(data["addFeaturePropery"])
-                
+
             },
             onError: (error) => {
                 console.error('Error signing up:', error.message);
@@ -337,7 +337,7 @@ function Selector(props) {
                                     () => {
                                         addFeatureProperty({
                                             variables: {
-                                                
+
                                                 addFeatureProperyDetails2: {
                                                     featureID: featureID,
                                                     value: inputString
@@ -347,7 +347,7 @@ function Selector(props) {
                                         setInputPart('');
                                     }
                                 }>
-                                <img src={addImg} style={{ height: '3vh', width: '2vw' }} className='mt-2 mx-2' />
+                                <img src={addImg} style={{ height: '3vh', width: '2vw' }} className='mt-2 mx-5' />
                             </div>
 
                         </div>
@@ -380,7 +380,7 @@ function Selector(props) {
                 </div>
             </div>
             <div className='-mt-72 py-5 flex flex-col justify-end gap-6 w-full'>
-                
+
                 <List contributionList={cList} />
             </div>
         </div>

@@ -30,7 +30,7 @@ function ShowPost() {
             setpList(data["getPosts"])
         },
         variables: detailVar,
-        
+
         onError: (error) => {
             console.error('Error signing up:', error.message);
 
@@ -75,13 +75,13 @@ function ShowPost() {
     return (
 
         <div >
-           
+
             {
-            
-            //postinfo != null && 
-            
-            //<Contribute postInfo={postinfo} pathname={`/showposts/${postinfo.postID}`} />
-            
+
+                //postinfo != null && 
+
+                //<Contribute postInfo={postinfo} pathname={`/showposts/${postinfo.postID}`} />
+
             }
             <div className={styles.parent1}>
                 {
@@ -101,30 +101,30 @@ function ShowPost() {
                         </div>
                         {
                             pList?.map((post) => (
-                            
-                                <Link 
+
+                                <Link
                                     to={{
                                         pathname: `/showposts/${post.postID}`
                                     }}
-                                
-                                    state = {{postinfo: post}}>
-                                
+
+                                    state={{ postinfo: post }}>
 
 
 
-                                <li className={styles.listItem} style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', padding: 0, marginRight: '10px' }} onClick={() => {
-                                    setpost(post)
-                                }}>
 
-                                    <img src={img1} alt='r2' className={styles.listImage}></img>
+                                    <li className={styles.listItem} style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', padding: 0, marginRight: '10px' }} onClick={() => {
+                                        setpost(post)
+                                    }}>
+
+                                        <img src={img1} alt='r2' className={styles.listImage}></img>
 
 
-                                    <div className={styles.itemContent}>
-                                        <h3 className={styles.itemTitle}>{post.postedBy}</h3>
-                                        <p className={styles.itemDesc}>{post.description}</p>
-                                    </div>
+                                        <div className={styles.itemContent}>
+                                            <h3 className={styles.itemTitle}>{post.postedBy}</h3>
+                                            <p className={styles.itemDesc}>{post.description}</p>
+                                        </div>
 
-                                </li>
+                                    </li>
                                 </Link>
                             ))
                         }

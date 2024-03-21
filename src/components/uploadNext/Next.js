@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import styles from './style.module.css'
 import img from '../assets/img2.png'
-import plantImg from '../assets/plant.jpg'
-import uploadImg from '../assets/upload1.png'
 import { useNavigate } from 'react-router-dom'
 
 import { gql, useMutation } from "@apollo/client";
 
 export default function Next(props) {
-
-    // const {data}= props.location.state || {};
-    // const images = data?.images || [];
     const images = props.data;
     console.log("bye", images, props)
 
@@ -70,7 +65,7 @@ export default function Next(props) {
                         }}>Previous</div>
                         <div className={styles.btn2} onClick={() => {
                             CreatePostfunc({ variables: { details: { "description": description, "images": images } } })
-                        
+
                             navigate("/")
 
                         }}>Submit</div>

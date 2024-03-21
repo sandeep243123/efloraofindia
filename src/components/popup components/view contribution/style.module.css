@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .modalWrapper {
     position: fixed;
     top: 0;
@@ -15,11 +17,12 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     background-color: white;
+    box-shadow: 0 0px 30px rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     width: 70%;
     height: 100%;
-    /* padding: 0.5%; */
+    padding: 1%;
     border-radius: 10px;
 
 }
@@ -33,10 +36,12 @@
 .title {
     color: #F41070;
     font-weight: 900;
-    font-size: 2em;
+    font-size: 1.7em;
     height: 40px;
     margin-left: 2%;
-    font-style: italic;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .btn {
@@ -45,6 +50,7 @@
     margin-top: 4px;
     font-size: 1.2em;
     margin-right: 1%;
+
 }
 
 .bottomSection {
@@ -64,8 +70,9 @@
     text-align: center;
     margin-top: 8px;
     color: gray;
-    font-style: italic;
-    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .listContainer {
@@ -74,6 +81,9 @@
     overflow-y: scroll;
 }
 
+.listContainer::-webkit-scrollbar {
+    display: none;
+}
 
 .rightSection {
     width: 75%;
@@ -85,8 +95,9 @@
     text-align: center;
     margin-top: 8px;
     color: gray;
-    font-style: italic;
-    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .rightListContainer {
@@ -114,6 +125,12 @@
     width: 85%;
 }
 
+.rightListT1 h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
 .rightListT1 img {
     height: 30px;
     width: 30px;
@@ -125,10 +142,17 @@
     justify-content: space-evenly;
     align-items: center;
     width: 15%;
+
 }
 
 .rightListT2 img {
     height: 30px;
     width: 30px;
     margin-right: 2%;
+}
+
+span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }

@@ -38,7 +38,7 @@ export default function Contact() {
                                             name="name"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-white placeholder-white bg-gray-600 border-0 rounded shadow outline-none"
+                                            className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border-0 rounded shadow outline-none"
                                             required
                                         />
                                     
@@ -52,7 +52,7 @@ export default function Contact() {
                                         name="email"
                                         value={email}
                                         onChange={(e)=>setEmail(e.target.value)}
-                                        className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-white placeholder-white bg-gray-600 border-0 rounded shadow outline-none"
+                                        className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border-0 rounded shadow outline-none"
                                         required
                                         />
                                     
@@ -66,12 +66,12 @@ export default function Contact() {
                                         name="subject"
                                         value={subject}
                                         onChange={(e)=>setSubject(e.target.value)}
-                                        className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-white placeholder-white bg-gray-600 border-0 rounded shadow outline-none"
+                                        className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border-0 rounded shadow outline-none"
                                         // required
                                     />
                                     
                                 </div>
-                                <div className="pt-0 mx-4 my-1">
+                                <div className="pt-0 m-4">
                                    {/* <label className="text-gray-100" for='message'>Your Message:</label> */}
                                     <textarea
                                         placeholder="Your message"
@@ -79,7 +79,7 @@ export default function Contact() {
                                         id="message"
                                         value={message}
                                         onChange={(e)=>setMessage(e.target.value)}
-                                        className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-white placeholder-white bg-gray-600 border-0 rounded shadow outline-none"
+                                        className="focus:outline-none focus:ring relative w-[70%] px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border-0 rounded shadow outline-none"
                                         required
                                     />
                                    
@@ -101,10 +101,10 @@ export default function Contact() {
                         {/* Right side of the page - Description Content */}
 
                         <div className={style.rightSection}>
-                                <div className="text-4xl font-bold italic font-serif text-[#3cbaa0] m-4 select-none">
-                                    Let's Talk About Your Query
+                                <div className="text-4xl font-bold text-[#3cbaa0] m-4">
+                                    Let's talk about your Query
                                 </div>
-                                <p className="text-white text-[1.2rem] font-mono italic select-none">Drop us a line through the form and we'll get back to you soon</p>
+                                <p className="text-white text-[1.2rem] font-mono italic">Drop us a line through the form and we'll get back to you soon</p>
                                 <img className={style.image} src={contact}></img>
                         </div>
 
