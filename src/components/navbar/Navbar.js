@@ -12,22 +12,15 @@ import exploreImg from '../assets/explore.png'
 import contributeImg from '../assets/jigsaw.png'
 
 import { AuthContext } from '../../services/AuthContext.js';
-import { useState,useContext} from "react";
+import { useState, useContext } from "react";
 export default function Navbar() {
   const [condition, setCondition] = useState(true)
 
 
-  const {isLoggedIn,logout}=useContext(AuthContext);
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
-  
-    // const [isOpen, setIsOpen] = useState(true);
-    const sidebarRef = useRef(null);
-    const handleLink = () => {
-      // setIsOpen(false);
-      // document.querySelector(".nav-btn").classList.remove("open");
-      sidebarRef.current.classList.remove("open");
-    }
-  
+
+
 
   const handleLogout = () => {
     logout();
@@ -37,7 +30,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="nav" ref={sidebarRef}>
+      <div className="nav">
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
           <div className="nav-title">
@@ -51,27 +44,27 @@ export default function Navbar() {
         </div>
         <div className="nav-links">
 
-          <Link to={'/'}  onClick={handleLink}><img src={exploreImg} className="icon-img"></img>Explore</Link>
-          <Link to={'/about'}  onClick={handleLink}><img src={aboutImg} className="icon-img"></img>About us</Link>
-          <Link to={'/contact'}  onClick={handleLink}><img src={contactImg} className="icon-img"></img>Contact us</Link>
+          <Link to={'/'}><img src={exploreImg} className="icon-img"></img>Explore</Link>
+          <Link to={'/about'} ><img src={aboutImg} className="icon-img"></img>About us</Link>
+          <Link to={'/contact'} ><img src={contactImg} className="icon-img"></img>Contact us</Link>
           {
-            isLoggedIn ?(
+            isLoggedIn ? (
               <>
-              <Link to={'/upload'}  onClick={handleLink}><img src={contributeImg} className="icon-img" alt=""></img>Contribute</Link>
+                <Link to={'/upload'} ><img src={contributeImg} className="icon-img" alt=""></img>Contribute</Link>
 
-              <Link to={'/'} onClick={handleLogout}><img src={logoutImg} className="icon-img" alt=""></img>Sign out</Link>
-              {/* <Link to={'/upload'}>Upload</Link> */}
-              <Link to={'/showposts'}  onClick={handleLink}>Show Posts</Link>
-              <Link to={'/dashboard'}  onClick={handleLink}>Leaderboard</Link>
+                <Link to={'/'} onClick={handleLogout}><img src={logoutImg} className="icon-img" alt=""></img>Sign out</Link>
+                {/* <Link to={'/upload'}>Upload</Link> */}
+                <Link to={'/showposts'} >Show Posts</Link>
+                <Link to={'/dashboard'} >Leaderboard</Link>
               </>
-            ):(
+            ) : (
               <>
-              <Link to={'/login'} onClick={handleLink}><img src={loginImg} className="icon-img"></img>Login</Link> 
-              <Link to={'/signup'} onClick={handleLink}><img src={signupImg} className="icon-img"></img>Signup</Link>
+                <Link to={'/login'} ><img src={loginImg} className="icon-img"></img>Login</Link>
+                <Link to={'/signup'} ><img src={signupImg} className="icon-img"></img>Signup</Link>
               </>
             )
           }
-          
+
         </div>
       </div>
     </div>
