@@ -45,6 +45,7 @@ export default function Navbar() {
         <div className="nav-links">
 
           <Link to={'/'}><img src={exploreImg} className="icon-img"></img>Explore</Link>
+          <Link to={'/profile'}><img src={exploreImg} className="icon-img"></img>Profile</Link>
           <Link to={'/about'} ><img src={aboutImg} className="icon-img"></img>About us</Link>
           <Link to={'/contact'} ><img src={contactImg} className="icon-img"></img>Contact us</Link>
           {

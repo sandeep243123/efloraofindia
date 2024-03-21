@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(232, 232, 232, 0);
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.itemC {
+    padding-bottom: 10vh;
+    overflow-y: auto;
+}
+
+.itemC::-webkit-scrollbar {
+    display: none;
+}
+
+.imgSection {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 10px;
+    background-color: rgba(228, 228, 228, 0.636);
+    height: 30vh;
+    width: 70vw;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.imgSection:hover {
+    box-shadow: 0 0 10px black;
+    background-color: rgba(240, 240, 240, 0.636);
+    width: 70.2vw;
+    transition: 0.8s;
+}
+
+.imgSection img {
+    height: 205px;
+    width: 205px;
+    border-radius: 100px;
+    border: 5px solid gray;
+}
+
+.imgSection label {
+    margin-top: -205px;
+    width: 205px;
+    height: 205px;
+    border-radius: 100px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#filePath {
+    display: none;
+}
+
+.userInfo {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 10px;
+    background-color: rgba(228, 228, 228, 0.636);
+    height: 30vh;
+    width: 70vw;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 0.5s;
+
+}
+
+.userInfo:hover {
+    box-shadow: 0 0 10px black;
+    background-color: rgba(240, 240, 240, 0.636);
+    width: 70.2vw;
+    transition: 0.8s;
+}
+
+.userInfo h1 {
+    margin-left: 1%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.userInfoData {
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ip1 {
+    display: flex;
+    justify-content: space-between;
+    margin: 1%;
+    width: 50vw;
+
+}
+
+.ip1 p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: black;
+}
+
+.ip1 input {
+    width: 30vw;
+    height: 5vh;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-left: 20px;
+    outline: none;
+}
+
+.contactInfo {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 10px;
+    background-color: rgba(228, 228, 228, 0.636);
+    height: 30vh;
+    width: 70vw;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 0.5s;
+}
+
+.contactInfo:hover {
+    box-shadow: 0 0 10px black;
+    background-color: rgba(240, 240, 240, 0.636);
+    width: 70.2vw;
+    transition: 0.8s;
+}
+
+.contactInfo h1 {
+    margin-left: 1%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.security {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 10px;
+    background-color: rgba(228, 228, 228, 0.636);
+    height: 35vh;
+    width: 70vw;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 0.5s;
+}
+
+.security:hover {
+    box-shadow: 0 0 10px black;
+    background-color: rgba(240, 240, 240, 0.636);
+    width: 70.2vw;
+    transition: 0.8s;
+}
+
+.security h1 {
+    margin-left: 1%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.btnSection {
+    width: 69vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnSection div {
+    background-color: rgb(30, 177, 30);
+    height: 35px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.btnSection div:hover {
+    background-color: green;
+    transition: 0.5s;
+}
