@@ -18,6 +18,7 @@ import FindAcc from './components/forgot password/find acc/FindAcc.js';
 import Otp from './components/forgot password/Otp/Otp.js';
 import SetPassword from './components/forgot password/set password/SetPassword.js';
 import Profile from './components/profile/Profile.js'
+import OTPSignup from './components/signup/OtpForm.js'
 
 function App() {
   const [data, setData] = useState([]);
@@ -29,6 +30,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='/otpsignup' element={<OTPSignup></OTPSignup>}></Route>
         <Route path='/showposts/:postID' element={<Contribute></Contribute>}></Route>
         <Route path='/terms' element={<Terms></Terms>}></Route>
         <Route path='/about' element={<About></About>}></Route>
