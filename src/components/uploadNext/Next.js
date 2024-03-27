@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import styles from './style.module.css'
 import img from '../assets/img2.png'
+import plantImg from '../assets/plant.jpg'
+import uploadImg from '../assets/upload1.png'
 import { useNavigate } from 'react-router-dom'
 
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer, toast } from 'react-toastify';
 import { gql, useMutation } from "@apollo/client";
 
 export default function Next(props) {
+
+    // const {data}= props.location.state || {};
+    // const images = data?.images || [];
     const images = props.data;
     console.log("bye", images, props)
 
@@ -14,18 +22,19 @@ export default function Next(props) {
     const [description, setDescription] = useState("");
 
     const createpostmut = gql`
-    mutation CreatePost($details: postCreate!) {
+    mutation CreatePost($details: PostCreateRequest!) {
         createPost(details: $details)
-    }
+      }
 `
     const [CreatePostfunc] =
         useMutation(createpostmut, {
             onCompleted: (data) => {
-                alert("Thankyou for the contribution")
+                toast("Thankyou for the contribution")
+                navigate("/")
             },
             onError: (error) => {
                 console.error('Error signing up:', error.message);
-
+                toast(error.message)
             }
         })
 
@@ -65,8 +74,8 @@ export default function Next(props) {
                         }}>Previous</div>
                         <div className={styles.btn2} onClick={() => {
                             CreatePostfunc({ variables: { details: { "description": description, "images": images } } })
-
-                            navigate("/")
+                        
+                            
 
                         }}>Submit</div>
                     </div>

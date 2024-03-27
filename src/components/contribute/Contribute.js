@@ -2,8 +2,6 @@
 import React from 'react';
 import style from './Contribute.module.css'
 import img1 from '../a1.jpg';
-import img2 from '../assets/rose.jpg'
-import img3 from '../assets/img3.webp'
 import { Link ,useLocation} from 'react-router-dom'
 import AddContribution from '../popup components/add contribution/AddContribution';
 import { useState } from 'react';
@@ -15,7 +13,7 @@ import Comments from '../comments/Comments';
 export default function Contribute(props) {
   const location = useLocation();
 
-   const {postinfo} = location.state || {};
+  const {postinfo} = location.state || {};
   // console.log(postinfo)
  //const postinfo = props.postInfo;
   // const path = props.pathname;
@@ -34,7 +32,7 @@ export default function Contribute(props) {
         <div className={style.user}>
           {/* image */}
           <div>
-            <img className={style.profile} src={img} alt='profileImage'></img>
+            <img className={style.profile} src={img}></img>
           </div>
 
           <p className={style.username}>{postinfo.postedBy}</p>
@@ -44,24 +42,21 @@ export default function Contribute(props) {
           {/* Image-section */}
           <div className={style.imgSection}>
             <div className={style.leftImg}>
-              <img src={img3} alt='l1'></img>
+              <img src={img1} alt='l1'></img>
             </div>
             <div className={style.rightImg}>
               <div className={style.rightImg1}>
-                <img src={img2} alt='r1'></img>
+                <img src={img1} alt='r1'></img>
               </div>
-              <div className={style.rightImg1}>
+              <div className={style.rightImg2}>
                 <img src={img1} alt='r2'></img>
-              </div>
-              <div className={style.rightImg1}>
-                <img src={img3} alt='r2'></img>
               </div>
             </div>
           </div>
 
           {/* Description-section */}
           <div className={style.desc}>
-            <textarea name="postContent" rows={17} cols={80} placeholder='Type about your plant details...' value={postinfo.description}/>
+            <textarea name="postContent" rows={17} cols={80} value={postinfo.description}/>
           </div>
         </div>
 
@@ -81,7 +76,7 @@ export default function Contribute(props) {
 
       </div>
 
-      <div className='mt-20 mb-10'>
+      <div className='mt-20 ml-6 mb-10'>
            <Comments postID={postinfo.postID}></Comments>
         </div>
     </div>

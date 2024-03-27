@@ -13,7 +13,7 @@ export default function ViewContribution(props) {
 
     const [cList, setcList] = useState([]);
     const { data } = useQuery(gql`
-    query GetContribution($details: GetContribution!) {
+    query GetContribution($details: GetContributionRequest!) {
         getContribution(details: $details) {
           FeatureName
           FeaturePropertyName
@@ -43,7 +43,7 @@ export default function ViewContribution(props) {
 
 
     const [getcList] = useLazyQuery(gql`
-    query GetContribution($details: GetContribution!) {
+    query GetContribution($details: GetContributionRequest!) {
         getContribution(details: $details) {
           FeatureName
           FeaturePropertyName

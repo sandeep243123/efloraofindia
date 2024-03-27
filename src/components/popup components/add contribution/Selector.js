@@ -12,7 +12,7 @@ function Selector(props) {
     const [inputValue, setInputValue] = useState("");
     const [inputPart, setInputPart] = useState("");
     const [inputFeature, setInputFeature] = useState("");
-    const [countries, setCountries] = useState(null)
+    const [part, setpart] = useState(null)
     const [selected, setSelected] = useState("Select Item")
     const [selected1, setSelected1] = useState("Select Item")
     const [open1, setOpen1] = useState(false);
@@ -47,7 +47,7 @@ function Selector(props) {
       }
     `, {
         onCompleted: (data) => {
-            setCountries(data.getPlantParts);
+            setpart(data.getPlantParts);
         }
     }
     );
@@ -67,7 +67,7 @@ function Selector(props) {
     );
 
     const [getAutoSuggestion] = useLazyQuery(gql`
-    query GetFeatureProperty($details: autoCompleteFeaturePropety) {
+    query GetFeatureProperty($details: GetFeaturePropertyRequest) {
         getFeatureProperty(details: $details) {
           featurePropertyID
           value
@@ -82,12 +82,12 @@ function Selector(props) {
     const [cList, setcList] = useState([]);
 
     const [getcList] = useLazyQuery(gql`
-    query GetContribution($details: GetContribution!) {
+    query GetContribution($details: GetContributionRequest!) {
         getContribution(details: $details) {
-          FeatureName
-          FeaturePropertyName
           contributionID
           partName
+          FeatureName
+          FeaturePropertyName
         }
       }
     `, {
@@ -98,7 +98,7 @@ function Selector(props) {
     })
     useEffect(() => {
         if (data) {
-            setCountries(data.getPlantParts);
+            setpart(data.getPlantParts);
             getcList({
                 variables: {
                     details: {
@@ -141,7 +141,7 @@ function Selector(props) {
 
 
     const contributionMutation = gql`
-    mutation AddContribution($details: addContribution!) {
+    mutation AddContribution($details: AddContributionRequest!) {
         addContribution(details: $details)
       }
     `
@@ -183,8 +183,8 @@ function Selector(props) {
 
 
     const addPartFeatureMutation = gql`
-    mutation AddPlantFeature($details: addPartFeature!) {
-        addPlantFeature(details: $details)
+    mutation AddPartFeature($details: AddPartFeatureRequest!) {
+        addPartFeature(details: $details)
       }
     `
     const [addPartFeature] =
@@ -199,15 +199,16 @@ function Selector(props) {
         })
 
     const addFeaturePropertyMutation = gql`
-    mutation AddFeaturePropery($addFeatureProperyDetails2: addFeaturePropery) {
-        addFeaturePropery(details: $addFeatureProperyDetails2)
+    mutation AddFeatureProperty($details: AddFeaturePropertyRequest) {
+        addFeatureProperty(details: $details)
       }
     `
     const [addFeatureProperty] =
         useMutation(addFeaturePropertyMutation, {
             onCompleted: (data) => {
-                setpropertyID(data["addFeaturePropery"])
-
+                console.log(data)
+                setpropertyID(data["addFeatureProperty"])
+                
             },
             onError: (error) => {
                 console.error('Error signing up:', error.message);
@@ -248,7 +249,7 @@ function Selector(props) {
                             </div>
                         </div>
 
-                        {countries?.map((country) => (
+                        {part?.map((country) => (
                             <li
                                 key={country?.name}
                                 className={`p-2 text-sm hover:bg-sky-600 hover:text-white ${country?.name?.toLowerCase().startsWith(inputValue) ? 'block' : 'hidden'}
@@ -337,8 +338,8 @@ function Selector(props) {
                                     () => {
                                         addFeatureProperty({
                                             variables: {
-
-                                                addFeatureProperyDetails2: {
+                                                
+                                                details: {
                                                     featureID: featureID,
                                                     value: inputString
                                                 }
@@ -347,7 +348,7 @@ function Selector(props) {
                                         setInputPart('');
                                     }
                                 }>
-                                <img src={addImg} style={{ height: '3vh', width: '2vw' }} className='mt-2 mx-5' />
+                                <img src={addImg} style={{ height: '3vh', width: '2vw' }} className='mt-2 mx-2' />
                             </div>
 
                         </div>
@@ -380,7 +381,7 @@ function Selector(props) {
                 </div>
             </div>
             <div className='-mt-72 py-5 flex flex-col justify-end gap-6 w-full'>
-
+                
                 <List contributionList={cList} />
             </div>
         </div>

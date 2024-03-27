@@ -35,7 +35,7 @@ function Otp() {
         ,
         onError: (error) => {
             console.error('Error signing up:', error.message);
-
+            toast(error.msg)
         }
 
     })

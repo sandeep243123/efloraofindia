@@ -1,17 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import styles from './style.module.css'
 import img from '../assets/img1.png'
-import { Link } from 'react-router-dom'
-// import Next from '../uploadNext/Next'
-// import { grey } from '@mui/material/colors'
-// import { click } from '@testing-library/user-event/dist/click'
-export default function UploadImg(props) {
+import plantImg from '../assets/plant.jpg'
+import uploadImg from '../assets/upload1.png'
+import { Link, useNavigate } from 'react-router-dom'
+import {useState,useRef} from "react";
+import Next from '../uploadNext/Next'
+
+export default function UploadImg({data,setData}) {
+    const [mes,setmessage]=useState("");
     const [images, setImages] = useState([])
     const [isDragging, setIsDragging] = useState(false)
-    const [path, setPath] = useState('')
     const fileInputRef = useRef(null)
-    const btnRef = useRef()
-    const labelRef = useRef()
     function selectFiles() {
         fileInputRef.current.click();
     }
@@ -23,25 +23,18 @@ export default function UploadImg(props) {
         for (let i = 0; i < files.length; i++) {
             if (files[i].type.split('/')[0] !== 'image') continue;
             if (!images.some((e) => e.name === files[i].name)) {
-                setImages((prevImages) => [
-                    ...prevImages, {
-                        name: files[i].name,
-                        url: URL.createObjectURL(files[i]),
-                    },
-                ]);
+                    const reader = new FileReader();
+                    reader.readAsDataURL(files[i]);
+                    
+                    reader.onload = () => {
+                        const p = reader.result
+                        setImages((prevImages) => [
+                            ...prevImages,p
+                        ]);
+                    }
+               
             }
         }
-    }
-    function onDrop(event) {
-        event.preventDefault();
-        setIsDragging(false);
-        const files = event.dataTransfer.files
-        const x = []
-        for (let i = 0; i < files.length; i++) {
-            x.push({ name: files[i].name, url: URL.createObjectURL(files[i]) })
-
-        }
-        setImages(x)
     }
     function deleteImage(index) {
         setImages((prevImages) =>
@@ -58,20 +51,28 @@ export default function UploadImg(props) {
         event.preventDefault();
         setIsDragging(false);
     }
+    function onDrop(event) {
+        event.preventDefault();
+        setIsDragging(false);
+        const files = event.dataTransfer.files
+        const x = []
 
-    useEffect(() => {
-        if (images.length < 3) {
-            btnRef.current.style.backgroundColor = "grey"
-            btnRef.current.style.pointerEvents = "none"
-            labelRef.current.style.display = "inline"
-            setPath('')
-        } else {
-            btnRef.current.style.backgroundColor = "rgb(88, 88, 255)"
-            btnRef.current.style.pointerEvents = "auto"
-            labelRef.current.style.display = "none"
-            setPath('/next')
+        for (let i = 0; i < files.length; i++)
+        {
+            const file = files[i];
+      
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+      
+            reader.onload = () => {
+                const p = reader.result
+                setImages((prevImages) => [
+                    ...prevImages,p
+                ]);
+            }
         }
-    })
+    }
+
     return (
         <div className={styles.parent}>
             <div className={styles.container}>
@@ -87,9 +88,7 @@ export default function UploadImg(props) {
                         <div className={styles.imgDiv}>
                             <img src={img} alt="" />
                             <h1 className={styles.addPhoto}>Add Photos</h1>
-                            <p className={styles.addPhoto1}>
-                                Please add atleast 3 photos of the plant for correct identification and contribution
-                            </p>
+                            {/*  */}
                         </div>
                     </div>
                 </div>
@@ -115,25 +114,37 @@ export default function UploadImg(props) {
                             <input name='file' type="file" className={styles.file} accept='image/*' multiple ref={fileInputRef} onChange={onFileSelect} />
                         </div>
                     </div>
-                    <label htmlFor="" ref={labelRef} style={{ color: 'red' }}>*Please upload atleast 3 images</label>
                     <div className={styles.imgContainer}>
                         {
                             images.map((images, index) => (
                                 <div className={styles.image} key={index}>
                                     <span className={styles.delete} onClick={() => deleteImage(index)}>&times;</span>
-                                    <img src={images.url} alt={images.name} />
+                                    <img src={images} alt={images.name} />
                                 </div>
                             ))
                         }
                     </div>
-                    <div className={styles.btnContainer}>
-                        <div className={styles.btn1}><Link to={'/'}>Previous</Link></div>
-                        <Link to={path} >
-                            <div ref={btnRef} className={styles.btn2}>Next</div>
-                        </Link>
+                    <div className="errormessage" >
+                        {
+                            console.log(mes)
+                        }
                     </div>
-                </div>
+                    <div className={styles.btnContainer}>
+                    {/* <div className={styles.btn2} onClick={()=>{
+                        if(images.length==0){
+                            setmessage("upload images ") }
+                            
+                            else{ 
+                                console.log("hi",images);
+                               // navigate("/next",{ state: { images: images } });
+                                <Next props={images}></Next>
+                            }
+                        }}>Next Step</div> */}
+                         <Link to={'/next'}><div className={styles.btn2} onClick={()=> setData(images)}>Next</div></Link>
+                        
+                    </div>
+                    </div>
             </div>
-        </div >
+        </div>
     )
 }

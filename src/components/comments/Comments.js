@@ -74,7 +74,7 @@ function Comments(props){
 
 
   const addCommentMutation = gql`
-  mutation PostComment($details: postComment!) {
+  mutation PostComment($details: PostCommentRequest!) {
     postComment(details: $details)
   }
   `

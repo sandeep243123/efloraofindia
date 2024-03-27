@@ -1,7 +1,3 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
 *{
     margin: 0;
     padding: 0;
@@ -13,17 +9,13 @@
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    background-image: linear-gradient(126deg, #009245 0%, #009245 100%);
 }
 
 .container{
-    
-    
-    width: 90%;
+    width: 99%;
     height: 75vh;
-    margin: 1.5rem 1.5rem;
+    margin: 0.5% 0.5%;
     backdrop-filter: blur(20px);
-    
     -webkit-backdrop-filter: blur(20px);
     border-radius: 10px;
     
@@ -52,36 +44,30 @@
 .top{
     display: flex;
     width: 100vw;
-    height: 50vh;
-    max-height: 500px;
+    height: 400px;
 }
 
 
 .imgSection{
     width: 50%;
-    height: 100%;
+    height: 400px;
     display: flex;
-    margin: 0.7rem;
+    margin: 10px;
 }
 
 .leftImg{
     width: 60%;
-    height: 100%;
-    padding: 0.5rem;
+    height: 400px;
 }
 
 .leftImg img{
-    width: 90%;
-    height: 100%; 
-    border: 0.5rem solid rgba(25, 38, 28, 0.444);
-    border-radius:5%;
+    width: 100%;
+    height: 57vh; 
     border-radius: 5px; 
-    
-    box-shadow: 2px 2px 5px rgb(43, 45, 40), -2px -2px 5px rgba(49, 60, 32, 0.532);
 }
 
 .leftImg img:hover{
-    scale: 0.95;
+    scale: 1.02;
     cursor: pointer;
     transition-duration: 0.5s;
     transition-property: all;
@@ -89,29 +75,17 @@
 }
 
 .rightImg{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    overflow-y: scroll;
-    width: calc(40% - 0.5rem);
-    align-items: center;
-    padding: 0.5rem;
+    width: 39%;
+    margin-left: 5px;
+    height: 400px;
 }
 
-.rightImg::-webkit-scrollbar{
-    display: none;
-}
-
-.rightImg1{
-    width: 100%;
-}
 .rightImg1 img{
     width: 90%;
-    height: 35vh;
-    border: 0.4rem solid rgba(25, 38, 28, 0.444);
-    border-radius:5%;
-    /* padding: 0.5rem; */
-    box-shadow: 2px 2px 5px rgb(55, 56, 52), -2px -2px 5px rgba(49, 60, 32, 0.532);
+    height: 28vh;
+    margin-bottom: 4px;
+    border-radius: 5px;
+   
     
 }
 
@@ -124,12 +98,10 @@
 }
 
 
-/* .rightImg2 img{
+.rightImg2 img{
     width: 90%;
-    height: 35vh;
-    border-radius:5%;
-    padding: 1rem;
-    box-shadow: 2px 2px 12px rgb(223, 227, 217), -2px -2px 12px rgba(49, 60, 32, 0.532);
+    height: 28vh;
+    border-radius: 5px;
 }
 
 .rightImg2 img:hover{
@@ -138,26 +110,15 @@
     transition-duration: 0.5s;
     transition-property: all;
     box-shadow: 2px 2px 12px rgb(172, 211, 114), -2px -2px 12px rgb(172, 211, 114);
-} */
+}
 
 .desc textarea{
     width: 45vw;
-    min-width: 300px;
-    height: 100%;
+    height: 57vh;
     word-wrap: break-word;
     border-radius: 10px;
-    background: #5f5b5b;
-    color: aliceblue;
+    background: #b4abab;
     margin-top: 0.7rem;
-    padding-left: 1rem;
-    outline: unset;
-    box-shadow: aqua;
-}
-
-
-textarea::placeholder{
-    font-family:'Times New Roman', Times, serif;
-    letter-spacing: 1.5px;
 }
 
 .btn{
@@ -211,57 +172,6 @@ textarea::placeholder{
     background-image: linear-gradient(124deg, rgb(8, 215, 29) 0%, rgb(63, 158, 59) 100%);
 }
 
-/* @media only screen and (min-width: 568px) and (max-width: 1024px)  {
-    .container{
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-    .top{
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        
-    }
-    .imgSection{
-        width: 90%;
-        min-height: 50%%;
-        max-height: 100%;
-    }
 
-    .leftImg{
-        max-height: 100%;
-        min-height: 50%;
-    }
 
-    .leftImg img{
-        max-height: 90%;
-        height: 50%;
-        
-    }
 
-    .rightImg{
-        
-        height: 300px;
-    }
-    .rightImg1 img{
-        height: 50%;
-    }
-
-    .desc{
-        width: 90%;
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .desc textarea{
-        width: 95%;
-        height: 100%;
-    }
-
-    
-
-}
-
- */
