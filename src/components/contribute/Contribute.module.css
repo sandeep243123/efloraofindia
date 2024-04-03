@@ -75,7 +75,7 @@
 }
 
 .rightImg{
-    width: 39%;
+    width: 97%;
     margin-left: 5px;
     height: 400px;
 }
@@ -88,6 +88,10 @@
    
     
 }
+.rightImg2Container {
+    height: 410px; /* Adjust as needed */
+    overflow-y: auto;
+  }
 
 .rightImg1 img:hover{
     scale: 1.02;

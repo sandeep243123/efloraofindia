@@ -14,11 +14,11 @@ export default function Contribute(props) {
   const location = useLocation();
 
   const {postinfo} = location.state || {};
-  // console.log(postinfo)
- //const postinfo = props.postInfo;
-  // const path = props.pathname;
-  // console.log(path)
+  const [selectedImage, setSelectedImage] = useState(postinfo.imagesLink[0]); 
 
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
  
 
 
@@ -40,19 +40,28 @@ export default function Contribute(props) {
 
         <div className={style.top}>
           {/* Image-section */}
-          <div className={style.imgSection}>
-            <div className={style.leftImg}>
-              <img src={img1} alt='l1'></img>
-            </div>
-            <div className={style.rightImg}>
-              <div className={style.rightImg1}>
-                <img src={img1} alt='r1'></img>
+            
+
+            <div className={style.imgSection}>
+              <div className={style.leftImg}>
+                <img src={`https://eflora.vangyaan.com/images/${selectedImage}`} alt='Selected Image'></img>
               </div>
-              <div className={style.rightImg2}>
-                <img src={img1} alt='r2'></img>
+              <div className={style.rightImg2Container}>
+              <div className={style.rightImg}>
+                <div className={style.rightImg1}>
+                  {/* Assuming images array contains the source URLs */}
+                  {postinfo.imagesLink.map((image, index) => (
+                    <img
+                      key={index}
+                      src={`https://eflora.vangyaan.com/images/${image}`}
+                      alt={`Right Image ${index + 1}`}
+                      onClick={() => handleImageClick(image)} // Handle click event
+                    />
+                  ))}
+                </div>
+                </div>
               </div>
             </div>
-          </div>
 
           {/* Description-section */}
           <div className={style.desc}>

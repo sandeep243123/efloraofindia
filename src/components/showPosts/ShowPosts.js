@@ -32,7 +32,7 @@ function ShowPost() {
         variables: detailVar,
 
         onError: (error) => {
-            console.error('Error signing up:', error.message);
+            console.error('Error:', error.message);
 
         }
     });
@@ -57,6 +57,9 @@ function ShowPost() {
         }
 
     })
+
+
+    
 
 
     useEffect(() => {
@@ -116,7 +119,7 @@ function ShowPost() {
                                         setpost(post)
                                     }}>
 
-                                        <img src={img1} alt='r2' className={styles.listImage}></img>
+                                        <img src={`https://eflora.vangyaan.com/images/${post.imagesLink[0]}`} alt='r2' className={styles.listImage}></img>
 
 
                                         <div className={styles.itemContent}>

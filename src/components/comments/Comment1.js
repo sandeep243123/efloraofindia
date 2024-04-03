@@ -94,11 +94,11 @@ const Comment1 = ({
                 <div className={style.vote}>
                         <div className={style.upvote}>
                           <img src={like} alt="like" name="vote" />
-                          <p>0</p>
+                          <p>comment.upvotes</p>
                         </div>
                         <div className={style.downvote}>
                           <img src={dislike} alt="dislike" name="vote"/>
-                          <p>0</p>
+                          <p>comment.downvotes</p>
                         </div>
                 </div>
             </div>

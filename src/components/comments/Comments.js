@@ -55,6 +55,9 @@ function Comments(props){
       commentText
       postedBy
       repliedTo
+      upvotes
+      downvotes
+      userAction
     }
   }
 `, {
@@ -131,6 +134,9 @@ function Comments(props){
       commentText
       postedBy
       repliedTo
+      upvotes
+      downvotes
+      userAction
     }
   }
 `, {
