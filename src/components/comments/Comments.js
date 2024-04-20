@@ -68,7 +68,7 @@ function Comments(props){
       variables: {details:{"postID":props.postID}}
       ,
       onError: (error) => {
-          console.error('Error signing up:', error.message);
+          console.error('Error:', error.message);
 
       }
   });
@@ -94,7 +94,7 @@ function Comments(props){
               }});
           },
           onError: (error) => {
-              console.error('Error signing up:', error.message);
+              console.error('Error:', error.message);
           }
       })
 
@@ -121,9 +121,24 @@ function Comments(props){
                  
               },
               onError: (error) => {
-                  console.error('Error signing up:', error.message);
+                  console.error('Error:', error.message);
               }
           })
+
+
+
+  const updateVotemutation = gql`
+  mutation UpdateVote($details: updateVoteDetail!) {
+    updateVote(details: $details)
+  }`
+  const [updatevotes] = useMutation(updateVotemutation,{
+    onCompleted:(data)=>{
+
+    },
+    onError: (error) => {
+      console.error('Error:', error.message);
+  }
+  })
 
 
 
@@ -145,7 +160,7 @@ function Comments(props){
         setCommentList(data["getComments"])
       },
       onError: (error) => {
-          console.error('Error signing up:', error.message);
+          console.error('Error:', error.message);
       }
   });
 
@@ -189,6 +204,14 @@ function Comments(props){
 
     };
 
+    const handlevote=(commentid,action)=>{
+      console.log("handle vote: ",action ," ",commentid)
+      updatevotes({variables:{details: {
+        "action": action,
+        "commentID":commentid
+      }}})
+    }
+
 
     return (
       <div>
@@ -209,6 +232,7 @@ function Comments(props){
         <CommentsSection
             handleInsertNode={handleInsertNode}
             handleDeleteNode={handleDeleteNode}
+            handlevote={handlevote}
             commentList={commentList} 
         />
       </div>

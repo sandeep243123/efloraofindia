@@ -11,7 +11,8 @@ const Comment1 = ({
     comment, 
     commentList , 
     handleInsertNode,
-    handleDeleteNode}) => {
+    handleDeleteNode,
+    handlevote}) => {
         
     const nestedComments = commentList.filter(c => c.repliedTo === comment.commentID);
 
@@ -92,12 +93,12 @@ const Comment1 = ({
                         {/* like and dislike button */}
 
                 <div className={style.vote}>
-                        <div className={style.upvote}>
-                          <img src={like} alt="like" name="vote" />
+                        <div className={comment.userAction === 'likes' ? style.active_upvote : style.upvote}>
+                          <img src={like} alt="like" name="vote" onClick={()=> handlevote(comment.commentID,"upvote")}/>
                           <p>comment.upvotes</p>
                         </div>
-                        <div className={style.downvote}>
-                          <img src={dislike} alt="dislike" name="vote"/>
+                        <div className={comment.userAction === 'likes' ? style.active_upvote : style.downvote}>
+                          <img src={dislike} alt="dislike" name="vote" onClick={()=> handlevote(comment.commentID,"downvote")}/>
                           <p>comment.downvotes</p>
                         </div>
                 </div>

@@ -30,6 +30,7 @@
   .inputContainer {
     /* margin-left: 15%; */
     display: flex;
+    flex-direction: row;
     align-items: baseline;
     gap: 5px;
   }
@@ -147,6 +148,13 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+  }
+
+  .active_upvote{
+    color: blue;
+  }
+  .active_downvote{
+    color:red;
   }
 
   .upvote{

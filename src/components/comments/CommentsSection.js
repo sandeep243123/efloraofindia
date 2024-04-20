@@ -5,7 +5,9 @@ import Comment1 from "./Comment1"
 const CommentsSection = ({ 
     commentList, 
     handleInsertNode,
-    handleDeleteNode}) => {
+    handleDeleteNode,
+    handlevote
+  }) => {
         if (!commentList) {
             return null; 
           }
